@@ -275,8 +275,9 @@ class SimpleTerm:
             else:
                 messagebox.showwarning("Missing Fields", "Please enter Source Term and Target Term.")
 
+
         new_term_dialog.bind('<Return>', lambda event: save_term()) #Save term
-        new_term_dialog.bind('<Escape>', lambda event: new_term_dialog.destroy(event)) #Close window
+        new_term_dialog.bind('<Escape>', lambda event: new_term_dialog.destroy()) #Close window
 
         new_term_dialog.transient(self.root)
         new_term_dialog.grab_set()
