@@ -275,12 +275,41 @@ class SimpleTerm:
             else:
                 messagebox.showwarning("Missing Fields", "Please enter Source Term and Target Term.")
 
+        new_term_dialog = tk.Toplevel(self.root)
+        new_term_dialog.title("Add New Term")
 
-        new_term_dialog.bind('<Return>', lambda event: save_term()) #Save term
-        new_term_dialog.bind('<Escape>', lambda event: new_term_dialog.destroy()) #Close window
+        dialog_width = 400
+        dialog_height = 100
+
+        screen_width = new_term_dialog.winfo_screenwidth()
+        screen_height = new_term_dialog.winfo_screenheight()
+
+        x = (screen_width // 2) - (dialog_width // 2)
+        y = (screen_height // 2) - (dialog_height // 2)
+
+        new_term_dialog.geometry(f"{dialog_width}x{dialog_height}+{x}+{y}")
+
+        tk.Label(new_term_dialog, text="Source Term:").grid(row=0, column=0, padx=10, pady=5, sticky='e')
+        source_entry = tk.Entry(new_term_dialog, width=40, relief=tk.FLAT)
+        source_entry.grid(row=0, column=1, padx=10, pady=5)
+        source_entry.insert(0, self.current_search_term)
+
+        tk.Label(new_term_dialog, text="Target Term:").grid(row=1, column=0, padx=10, pady=5, sticky='e')
+        target_entry = tk.Entry(new_term_dialog, width=40, relief=tk.FLAT)
+        target_entry.grid(row=1, column=1, padx=10, pady=5)
+
+        tk.Label(new_term_dialog, text="Notes:").grid(row=2, column=0, padx=10, pady=5, sticky='e')
+        notes_entry = tk.Entry(new_term_dialog, width=40, relief=tk.FLAT)
+        notes_entry.grid(row=2, column=1, padx=10, pady=5)
+
+        new_term_dialog.bind('<Return>', lambda event: save_term())
+        new_term_dialog.bind('<Escape>', lambda event: new_term_dialog.destroy())
 
         new_term_dialog.transient(self.root)
         new_term_dialog.grab_set()
+        new_term_dialog.focus_set()
+        source_entry.focus()
+
         self.root.wait_window(new_term_dialog)
 
     def open_excel_file(self):
