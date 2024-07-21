@@ -1,8 +1,10 @@
-**A simple application to efficiently use term bases sent as Excel files without the need of using your mouse (hopefully).
+A simple application to efficiently use term bases sent as Excel files without the need of using your mouse (hopefully).
 
 Download and launch the .exe, select a compatible excel file and start searching.
 
 If you also want to see the notes section you can just resize the window. It is hidden by default to save screen space.
+
+For the online version check https://github.com/MiraakEren/SimpleTermOnline
 
 Important:
 The first row of the selected Excel file should be 'Source Term', 'Target Term', 'Notes'**
